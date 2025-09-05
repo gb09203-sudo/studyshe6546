@@ -1,0 +1,220 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ImperfectBtech.in — Notes • Assignments • Projects • Lab Manuals</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="{% static 'notes/style.css' %}">
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen">
+
+  <!-- Loader -->
+  <div id="loader">
+    <canvas id="matrix"></canvas>
+    <div class="loading-text">
+      <h1>ImperfectBtech.in</h1>
+      <div class="progress"><div></div></div>
+    </div>
+  </div>
+
+  <!-- Main content hidden until loader finishes -->
+  <div id="main-content" class="hidden">
+
+    <!-- Header -->
+    <header class="bg-gray-900 border-b border-gray-800 sticky top-0 z-50">
+      <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+        <div class="flex items-center font-mono text-xl text-[#18ff6d] space-x-2">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none">
+            <path d="M3 6h18M6 12h12M9 18h6" stroke="#18ff6d" stroke-width="2" stroke-linecap="round"></path>
+          </svg>
+          ImperfectBtech<span class="opacity-60">.in</span>
+          <span class="bg-gray-700 text-gray-300 text-xs px-2 py-0.5 rounded-full font-sans">beta</span>
+        </div>
+        <div class="flex items-center space-x-4">
+          <div class="relative flex items-center w-full md:w-auto">
+            <input id="search" type="search" placeholder="Search notes, assignments, projects…"
+              class="w-full md:w-80 pl-10 pr-4 py-2 bg-gray-800 text-gray-300 rounded-full border border-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500">
+            <svg class="absolute left-3 w-4 h-4 text-gray-400" viewBox="0 0 24 24" fill="none">
+              <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"></circle>
+              <path d="M20 20l-3.2-3.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+            </svg>
+          </div>
+          <a href="#upload" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-5 rounded-full shadow-lg transition">+ Upload</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="container mx-auto px-4 py-16 text-center">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
+        Your study shelf for <br>
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-cyan-500">
+          Notes, Assignments, Projects & Lab Manuals.
+        </span>
+      </h1>
+      <p class="mt-4 text-sm sm:text-base text-gray-400 max-w-2xl mx-auto">
+        Curated resources for B.Tech • B.Sc • BA • Nursing — fast, organized, downloadable.
+      </p>
+    </section>
+
+    <!-- Scrolling Notice Line -->
+    <div class="overflow-hidden bg-white h-6 flex items-center mb-6">
+      <div class="animate-marquee whitespace-nowrap text-gray-900 font-semibold px-4">
+        📌 Note: All university notes, previous year questions, assignments, and project PDFs are available here. Stay updated with the latest study materials and prepare effectively for exams. Download and access anytime, anywhere!
+      </div>
+    </div>
+
+    <style>
+      @keyframes marquee {
+        0% { transform: translateX(100%); }
+        100% { transform: translateX(-100%); }
+      }
+      .animate-marquee {
+        display: inline-block;
+        animation: marquee 25s linear infinite;
+      }
+    </style>
+
+    <!-- Bullet Points Above UG Notes -->
+    <section class="container mx-auto px-4 mb-6">
+      <ul class="list-disc list-inside space-y-2 text-gray-200 text-sm sm:text-base">
+        <li>Comprehensive resources for B.Tech, B.Sc, BA, Nursing, and other streams.</li>
+        <li>Exam-focused content including previous year questions and summaries.</li>
+        <li>Downloadable PDFs for offline access anytime, anywhere.</li>
+        <li>Step-by-step guidance with notes, projects, and practicals.</li>
+        <li>User-friendly interface with fast navigation and easy search.</li>
+      </ul>
+    </section>
+
+    <!-- Cards Section -->
+    <section class="container mx-auto px-4 py-12 space-y-8">
+
+      <!-- UG Notes -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <a href="{% url 'ug_notes' %}">
+          <div class="bg-gray-800 rounded-xl p-4 sm:p-6 shadow-xl flex flex-col justify-between hover:scale-105 transition-transform">
+            <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-4">UG Notes</h3>
+            <p class="text-gray-400 text-sm sm:text-base mb-4">Unit-wise PDFs, exam-focused summaries.</p>
+            <span class="mt-auto w-full bg-green-500 hover:bg-green-600 text-white py-2 rounded-lg text-center inline-block">Explore Notes</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Bullet Points Between UG Notes and Projects -->
+      <div class="px-4 sm:px-0">
+        <ul class="list-disc list-inside space-y-2 text-gray-200 text-sm sm:text-base max-w-3xl mx-auto">
+          <li>Explore a wide range of UG notes and detailed study materials.</li>
+          <li>Access previous year questions and exam-focused summaries.</li>
+          <li>Find mini and major projects with abstracts and code snippets.</li>
+          <li>Downloadable resources to study offline anytime, anywhere.</li>
+          <li>Everything curated to help you prepare efficiently and score better.</li>
+        </ul>
+      </div>
+
+      <!-- Projects -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <a href="{% url 'projects' %}">
+          <div class="bg-gray-800 rounded-xl p-4 sm:p-6 shadow-xl flex flex-col justify-between hover:scale-105 transition-transform">
+            <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-4">Projects</h3>
+            <p class="text-gray-400 text-sm sm:text-base mb-4">Mini + major projects with abstracts & code.</p>
+            <button class="mt-auto w-full bg-green-500 hover:bg-green-600 text-white py-2 rounded-lg">Browse Projects</button>
+          </div>
+        </a>
+      </div>
+
+      <div class="mt-6 px-4 sm:px-0 max-w-3xl mx-auto">
+        <ul class="list-disc list-inside space-y-2 text-gray-200 text-sm sm:text-base">
+          <li>Step into hands-on learning with ready-to-use project resources.</li>
+          <li>Explore, implement, and customize projects with ease.</li>
+          <li>Boost your skills and get practical exposure.</li>
+          <li>All materials curated to save your time and effort.</li>
+          <li>Turn ideas into real submissions confidently.</li>
+        </ul>
+      </div>
+
+      <!-- Animated Stats Section -->
+      <div class="mt-8 bg-white rounded-xl p-6 flex flex-col sm:flex-row justify-around items-center text-center gap-4">
+        <div>
+          <p class="text-2xl sm:text-3xl font-bold text-gray-900" id="visits">0</p>
+          <p class="text-gray-600 text-sm sm:text-base">Visits</p>
+        </div>
+        <div>
+          <p class="text-2xl sm:text-3xl font-bold text-gray-900" id="reads">0</p>
+          <p class="text-gray-600 text-sm sm:text-base">Reads</p>
+        </div>
+        <div>
+          <p class="text-2xl sm:text-3xl font-bold text-gray-900" id="downloads">0</p>
+          <p class="text-gray-600 text-sm sm:text-base">Downloads</p>
+        </div>
+      </div>
+
+      <script>
+      function animateValue(id, start, end, duration) {
+          let obj = document.getElementById(id);
+          let range = end - start;
+          let current = start;
+          let stepTime = Math.max(Math.floor(duration / range), 1);
+          let increment = end > start ? 1 : -1;
+
+          let timer = setInterval(function() {
+              current += increment;
+              obj.textContent = current.toLocaleString();
+              if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
+                  clearInterval(timer);
+                  obj.textContent = end.toLocaleString() + "+";
+              }
+          }, stepTime);
+      }
+
+      // Animate all counters together in ~5.5 seconds
+      animateValue("visits", 0, 50000, 5500);
+      animateValue("reads", 0, 45879, 5500);
+      animateValue("downloads", 0, 30000, 5500);
+      </script>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-8 mt-12 border-t border-gray-800">
+      <div class="container mx-auto px-4 text-center space-y-3">
+        <p>© 2025 ImperfectBtech.in — Your trusted study companion.</p>
+        <p>All rights reserved. Designed for students, by students.</p>
+        <p>Follow us for updates on WhatsApp and official channels.</p>
+        <p>Fast, reliable, and free access to study materials.</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Popup -->
+  <div class="overlay fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50" id="popup">
+    <div class="modal bg-gray-800 rounded-xl p-6 max-w-md text-center shadow-xl">
+      <h2 class="text-lg font-bold mb-4">📢 Note: This App is 100% FREE!</h2>
+      <p class="text-gray-300 text-sm mb-6 leading-relaxed">
+        If someone charged you for this app, ask for a refund immediately.<br><br>
+        🚫 Due to frequent copyright issues on Telegram, all official updates are now shared on WhatsApp.<br>
+        👉 The Telegram link is available in our official WhatsApp channel. Only join that one — all others are unofficial.<br><br>
+        Stay updated, stay safe! 🔒🚩
+      </p>
+      <div class="flex justify-around">
+        <button class="cancel bg-gray-700 text-white px-4 py-2 rounded-lg" onclick="closePopup()">Cancel</button>
+        <button class="join bg-green-500 text-white px-4 py-2 rounded-lg" onclick="joinWhatsApp()">Join Now</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="{% static 'notes/script.js' %}"></script>
+  <script>
+    function closePopup() {
+      document.getElementById('popup').style.display = 'none';
+    }
+    function joinWhatsApp() {
+      window.open('https://whatsapp.com/channel/0029VbBI7qs6hENkJpmILv2o', '_blank');
+    }
+  </script>
+
+</body>
+</html>

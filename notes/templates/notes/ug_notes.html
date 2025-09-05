@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UG Notes — Imperfectbtech.in</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="{% static 'notes/style.css' %}">
+</head>
+<body class="bg-gray-900 text-gray-100 flex flex-col min-h-screen">
+
+  <div class="container mx-auto px-4 py-12 flex-grow">
+    <h1 class="text-3xl font-bold mb-8 text-center text-green-400">UG Notes</h1>
+
+    <!-- Dropdowns -->
+    <section class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-8">
+      <div>
+        <label>Select State:</label>
+        <select id="stateSelect" class="w-full p-2 rounded bg-gray-800 text-gray-200">
+          <option value="">Choose State</option>
+        </select>
+      </div>
+      <div>
+        <label>Select University:</label>
+        <select id="universitySelect" class="w-full p-2 rounded bg-gray-800 text-gray-200" disabled>
+          <option value="">Choose University</option>
+        </select>
+      </div>
+      <div>
+        <label>Select Course:</label>
+        <select id="courseSelect" class="w-full p-2 rounded bg-gray-800 text-gray-200" disabled>
+          <option value="">Choose Course</option>
+        </select>
+      </div>
+      <div>
+        <label>Select Semester:</label>
+        <select id="semesterSelect" class="w-full p-2 rounded bg-gray-800 text-gray-200" disabled>
+          <option value="">Choose Semester</option>
+        </select>
+      </div>
+      <div>
+        <label>Select Subject:</label>
+        <select id="subjectSelect" class="w-full p-2 rounded bg-gray-800 text-gray-200" disabled>
+          <option value="">Choose Subject</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Show Notes Button -->
+    <div class="text-center mb-8">
+      <button id="showNotesBtn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg">
+        Show Notes
+      </button>
+    </div>
+
+    <!-- Notes Display -->
+    <div id="notesContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 py-6 px-4 text-center text-gray-400 text-sm sm:text-base">
+    <p class="mb-1">© 2025 <span class="text-green-400 font-semibold">Imperfectbtech.in</span> — Your trusted study companion.</p>
+    <p class="mb-1">All rights reserved. Designed for students, by students.</p>
+    <p class="mb-1">Follow us for updates on WhatsApp and official channels.</p>
+    <p>Fast, reliable, and free access to study materials.</p>
+  </footer>
+
+  <script src="{% static 'notes/ug-notes.js' %}"></script>
+</body>
+</html>
